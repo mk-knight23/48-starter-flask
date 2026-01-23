@@ -187,7 +187,7 @@ export default function App() {
                         <Rocket className="w-5 h-5 text-flask" />
                         <span className="text-sm font-bold tracking-tight text-white uppercase tracking-widest">FlaskHub</span>
                     </div>
-                    <p className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.4em]">© 2024 MK_ACCELERATOR_CORP • 23/30 DEPLOYED</p>
+                    <p className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.4em]">© 2026 FLASK_HUB // ENGINE • 23/30 DISPATCHED</p>
                 </div>
             </footer>
         </div>

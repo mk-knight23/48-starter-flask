@@ -1,21 +1,22 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+    --color-flask: #ff4b4b;
+}
 
 @layer base {
     body {
-        @apply antialiased bg-[#0a192f] text-slate-300 font-sans;
+        @apply bg-[#0a192f] text-white antialiased selection:bg-flask/30;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
     }
 }
 
-.glass-panel {
-    @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl;
-}
+@layer components {
+    .glass-panel {
+        @apply bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl overflow-hidden transition-all;
+    }
 
-.neon-border {
-    @apply border border-[#00b4d8]/50 shadow-neon;
-}
-
-.terminal-text {
-    @apply font-mono text-[#00b4d8];
+    .neon-border {
+        @apply border border-flask/20 hover:border-flask/50 shadow-lg hover:shadow-flask/20;
+    }
 }
