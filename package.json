@@ -1,44 +1,46 @@
 {
     "name": "48-starter-flask",
-  "private": false,
-  "version": "2.1.0",
+    "private": false,
+    "version": "2.1.0",
     "description": "Lightweight Flask/React starter modernized with React 19, Vite 6, and Tailwind CSS v4. Academic/Research theme.",
-  "type": "module",
-  "scripts": {
-    "lint": "eslint .",
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "type-check": "tsc --noEmit"
-  },
-  "keywords": [
-    "flask",
-    "react",
-    "starter",
-    "tailwind",
-    "typescript",
-    "python"
-  ],
-  "author": "Kazi Musharraf",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mk-knight23/23-flask-starter.git"
-  },
-    "homepage": "https://mk-knight23.github.io/48-starter-flask/",
+    "type": "module",
+    "scripts": {
+        "lint": "eslint .",
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview",
+        "type-check": "tsc --noEmit"
+    },
+    "keywords": [
+        "flask",
+        "react",
+        "starter",
+        "tailwind",
+        "typescript",
+        "python"
+    ],
+    "author": "Kazi Musharraf",
+    "license": "MIT",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/mk-knight23/48-starter-flask.git"
     },
-  "devDependencies": {
-    "@tailwindcss/vite": "^4.1.18",
-    "@types/react": "^19.2.9",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^4.7.0",
-    "autoprefixer": "^10.4.23",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^4.0.0",
-    "typescript": "^5.9.3",
-    "vite": "^6.4.1"
-  }
+    "homepage": "https://mk-knight23.github.io/48-starter-flask/",
+    "devDependencies": {
+        "@tailwindcss/vite": "^4.1.18",
+        "@types/react": "^19.2.10",
+        "@types/react-dom": "^19.2.3",
+        "@vitejs/plugin-react": "^4.7.0",
+        "autoprefixer": "^10.4.23",
+        "postcss": "^8.5.6",
+        "tailwindcss": "^4.0.0",
+        "typescript": "^5.9.3",
+        "vite": "^6.4.1"
+    },
+    "dependencies": {
+        "framer-motion": "^12.29.2",
+        "lucide-react": "^0.563.0",
+        "react": "^19.2.4",
+        "react-dom": "^19.2.4"
+    }
 }
