@@ -1,0 +1,3 @@
+"""
+Flask Starter Application Package
+"""

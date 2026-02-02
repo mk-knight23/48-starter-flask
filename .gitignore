@@ -20,7 +20,69 @@ venv/
 .vercel
 .env*.local
 
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Flask
+instance/
+.webassets-cache
+migrations/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
 # Security - env files
 .env.local
 .env.*.local
 .env.production
+.env
+
+# Logs
+*.log
+logs/

@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - FLASK_ENV=production
+      - DATABASE_URL=postgresql://flask:flask@db:5432/flask_starter
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - .:/app
+    command: gunicorn -c gunicorn_config.py app:app
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=flask_starter
+      - POSTGRES_USER=flask
+      - POSTGRES_PASSWORD=flask
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - web
+
+volumes:
+  postgres_data:
