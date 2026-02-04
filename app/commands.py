@@ -2,22 +2,21 @@
 Flask CLI Commands
 """
 import click
-from app import create_app
+from flask.cli import with_appcontext
 from app.models import db
 from app.models.user import User, Post
 
 
-app = create_app()
-
-
-@app.cli.command()
+@click.command('init-db')
+@with_appcontext
 def init_db():
     """Initialize the database"""
     db.create_all()
     click.echo('Database initialized.')
 
 
-@app.cli.command()
+@click.command('seed-db')
+@with_appcontext
 def seed_db():
     """Seed database with sample data"""
     # Create admin user
@@ -59,8 +58,9 @@ def seed_db():
     click.echo('Database seeded successfully.')
 
 
-@app.cli.command()
+@click.command('create-users')
 @click.option('--count', default=10, help='Number of users to create')
+@with_appcontext
 def create_users(count):
     """Create sample users"""
     from faker import Faker
@@ -79,7 +79,8 @@ def create_users(count):
     click.echo(f'{count} users created.')
 
 
-@app.cli.command()
+@click.command('reset-db')
+@with_appcontext
 def reset_db():
     """Reset the database"""
     if click.confirm('Are you sure you want to reset the database?'):
@@ -88,8 +89,9 @@ def reset_db():
         click.echo('Database reset.')
 
 
-@app.cli.command()
-def routes():
+@click.command('list-routes')
+@with_appcontext
+def list_routes():
     """List all routes"""
     from flask import current_app
     output = []
