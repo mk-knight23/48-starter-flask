@@ -62,3 +62,14 @@ def setup_admin(app):
     admin.add_view(PostAdminView(Post, db.session, name='Posts'))
 
     return admin
+
+
+def setup_admin_safe(app):
+    """Setup admin panel with error handling"""
+    try:
+        setup_admin(app)
+        app.logger.info("Admin panel setup successfully")
+    except Exception as e:
+        app.logger.warning(f"Admin panel setup failed: {e}")
+        # Continue without admin panel
+        pass

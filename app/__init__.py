@@ -39,6 +39,10 @@ def create_app(config_name='development'):
     migrate.init_app(app, db)
     jwt.init_app(app)
 
+    # Setup logging
+    from config.logging import setup_logging
+    setup_logging(app)
+
     # CORS configuration
     cors_origins = os.getenv('CORS_ORIGINS', '').split(',')
     CORS(app, origins=cors_origins if cors_origins else ['http://localhost:5173', 'http://localhost:5181'])
@@ -55,8 +59,8 @@ def create_app(config_name='development'):
     app.register_blueprint(api_v2_bp, url_prefix='/api/v2')
 
     # Setup admin panel
-    from app.admin import setup_admin
-    setup_admin(app)
+    from app.admin import setup_admin_safe
+    setup_admin_safe(app)
 
     # Error handlers
     @app.errorhandler(404)
@@ -74,6 +78,23 @@ def create_app(config_name='development'):
     @app.errorhandler(401)
     def unauthorized(error):
         return jsonify({'error': 'Unauthorized access'}), 401
+
+    # Security headers and configuration
+    if not app.debug:
+        # Talisman security middleware for production
+        from flask_talisman import Talisman
+        Talisman(app, force_https=True,
+                 content_security_policy={
+                     'default-src': "'self'",
+                     'script-src': "'self' 'unsafe-inline' 'unsafe-eval'",
+                     'style-src': "'self' 'unsafe-inline'",
+                     'img-src': "'self' data:",
+                     'connect-src': "'self'"
+                 })
+
+    # Rate limiting configuration
+    from config.rate_limiting import setup_rate_limiting
+    setup_rate_limiting(app)
 
     # JWT error handlers
     @jwt.expired_token_loader

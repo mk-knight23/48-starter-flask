@@ -29,5 +29,12 @@ pytest-cov==6.0.0
 black==24.10.0
 flake8==7.1.1
 
+# Security
+flask-talisman==1.1.0
+flask-limiter==3.8.0
+
+# Rate limiting storage
+redis==5.2.1
+
 # Environment
 python-dotenv==1.0.1
