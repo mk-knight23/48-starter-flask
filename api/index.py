@@ -1,21 +1,21 @@
 """
-Vercel Serverless Function Handler for Flask App
+Vercel Serverless Function Handler
 """
-import sys
-import os
 import json
+from http.server import BaseHTTPRequestHandler
 
-# Add parent directory to path
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+class handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header('Content-Type', 'application/json')
+        self.end_headers()
+        response = {
+            'status': 'healthy',
+            'version': 'v1',
+            'platform': 'vercel',
+            'message': 'Flask Starter API running on Vercel'
+        }
+        self.wfile.write(json.dumps(response).encode())
 
-# Simple health check handler for Vercel
-def handler(request, response):
-    """Simple handler for Vercel serverless functions"""
-    response.status_code = 200
-    response.headers['Content-Type'] = 'application/json'
-    return json.dumps({
-        'status': 'healthy',
-        'version': 'v1',
-        'platform': 'vercel',
-        'message': 'Flask Starter API running on Vercel'
-    })
+    def do_POST(self):
+        self.do_GET()
