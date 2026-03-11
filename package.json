@@ -5,6 +5,7 @@
     "description": "Lightweight Flask/React starter modernized with React 19, Vite 6, and Tailwind CSS v4. Academic/Research theme.",
     "type": "module",
     "scripts": {
+    "production": "npm run build && npm start",
         "lint": "eslint .",
         "dev": "vite",
         "build": "tsc && vite build",
